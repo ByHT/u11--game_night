@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
+require('./routes/user.routes')(app);
 
 const app = express();
 
@@ -25,6 +28,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
+//Connect to mongoDB
 const db = require('./models');
 db.mongoose
   .connect(db.url, {
